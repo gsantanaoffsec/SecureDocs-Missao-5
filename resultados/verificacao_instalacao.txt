@@ -1,0 +1,50 @@
+Validação em Windows, CPython 3.12.14
+Instalação local com pip concluída sem dependências de execução.
+Execução fora da árvore do projeto, usando o pacote instalado.
+
+python -m securedocs_hash --help [código 0]
+usage: __main__.py [-h] {texto,arquivo,comparar,verificar,demo} ...
+
+Verificação de integridade SecureDocs
+
+positional arguments:
+  {texto,arquivo,comparar,verificar,demo}
+
+options:
+  -h, --help            show this help message and exit
+
+python -m securedocs_hash texto abc -a sha3-256 [código 0]
+3a985da74fe225b2045c172d6bd390bd855f086e3e9d525b46bfe24511431532
+
+python -m securedocs_hash arquivo contrato_original.pdf -a sha256 [código 0]
+094de8d3da50a38b3e286fcab36ee1479a976b0ee2988bdd274e0586f8df4227
+
+python -m securedocs_hash comparar contrato_original.pdf contrato_modificado.pdf [código 1]
+Original: 094de8d3da50a38b3e286fcab36ee1479a976b0ee2988bdd274e0586f8df4227
+Recebido: 39b66727efd05ad68b349934ddcbdea64b8073acc2b416aa62b49e0a3876d0f1
+Resumos diferentes.
+
+python -m securedocs_hash verificar contrato_original.pdf 094de8d3da50a38b3e286fcab36ee1479a976b0ee2988bdd274e0586f8df4227 [código 0]
+Calculado: 094de8d3da50a38b3e286fcab36ee1479a976b0ee2988bdd274e0586f8df4227
+Integridade compatível com a referência.
+
+python -m securedocs_hash verificar contrato_modificado.pdf 094de8d3da50a38b3e286fcab36ee1479a976b0ee2988bdd274e0586f8df4227 [código 1]
+Calculado: 39b66727efd05ad68b349934ddcbdea64b8073acc2b416aa62b49e0a3876d0f1
+Integridade divergente.
+
+python -m securedocs_hash verificar contrato_modificado.pdf 39b66727efd05ad68b349934ddcbdea64b8073acc2b416aa62b49e0a3876d0f1 [código 0]
+Calculado: 39b66727efd05ad68b349934ddcbdea64b8073acc2b416aa62b49e0a3876d0f1
+Integridade compatível com a referência.
+
+python -m securedocs_hash demo documento_original.txt documento_modificado.txt [código 0]
+Algoritmo | Bits | Hash original | Hash modificado | Bits diferentes | Percentual
+md5 | 128 | eeec954644bad972c4c63928d18b0b65 | b12b8c47a06ef38731bc4f8d97ef69e5 | 62 | 48.44%
+sha1 | 160 | 7ef3e5bea79dac46665626516e06fef5900dfbc6 | 99715d0005dbfbeeec77b469200edcb564a8edd4 | 65 | 40.62%
+sha224 | 224 | 8d6938573b7a8a2cfaa80793e53e0fcc0eb5bf8c2c5c0f3b8f59580c | 667e98024e9e1d73c5e9fc7b04a4990df69ce88ebf588ef92a044f9b | 112 | 50.00%
+sha256 | 256 | 75a63754a4a829dfad6f23d09b32cbfa4eb6b6077a79a0b6de39208d1327835b | de6f05d1960f86dea7879152c86124206d918ee594f3a3f99938a924cc02c1a8 | 122 | 47.66%
+sha384 | 384 | fc891867247764fcee22c7094f537b07ebd3ec600275e17644749e837e06049d6457701096f74b820c93cf6443af3a87 | 6bce28f773260b7ecf2d0b0971c98b6e0368d7230bfa2d7afad8cd9e7f8977c07f2b90f62465b08585d39bf88a940b74 | 184 | 47.92%
+sha512 | 512 | 1d519dee35d1b21787f6387bf63dad9e7b66c28269e7a3c3275b37b76af4bf3529addad5d83f8bd3d6f98786d40f9f4a0ca2fd59bb8c439f36df9f304399760b | b56ac8f9fa2d3397a443d20b3576e19e4d19ccbef8f107a0dd38ae7da37a5d35cab4e261f3f945638e8350445024b9acc1788cbf7717e560193cd9d94505e3d8 | 254 | 49.61%
+sha3-224 | 224 | aaf6b5cc7daabe072c674ecf576a767b1fb8c379ae48388732a1c039 | f1046928fd3c70c98661536dc8b23a9fc4900d724994203bf6fac6b4 | 112 | 50.00%
+sha3-256 | 256 | de2948bf67f260be4e84259bdb75c373bc8ccb7e77a8b7435cb8ee42936b12b5 | 7f28fff4cfaaddac285fb73c6d5a221265c90141535ba68fb8de5f62b118bcc1 | 124 | 48.44%
+sha3-384 | 384 | c94b95bc3189348f14747e51479dca5da6f43d8414176580bd348f5a8a9ae1514f0f780a648f7bac4e67c2a525ac0609 | 2f03f1f5db6947e63304ecf39b6df61caa03c7a028638aa59e8df46bedc257832f1addb6fb9da713b89172b17b10bab8 | 197 | 51.30%
+sha3-512 | 512 | ce6854ded9e8f0539ac3582bccd184bc9370033e9b2c265c3c7b6d016a6903c58f4402eb6773423eb67454c8307db7e62a5392a705adabeef17436a11fd6eb39 | 0a12250ea388cfc4998123effcf7fc9528bc82ea79ce1a5f59ce7e41b33ee6c7a0a407e22ef7381932758284498ddfb7c842e2b0ff77dc278d825f76997d386e | 242 | 47.27%

@@ -1,0 +1,1 @@
+# A aplicação, os testes e o experimento usam apenas a biblioteca padrão.

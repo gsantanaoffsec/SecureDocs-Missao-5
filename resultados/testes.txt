@@ -1,0 +1,20 @@
+test_blocks (test_securedocs.TestSecureDocs.test_blocks) ... ok
+test_cli_exit_codes (test_securedocs.TestSecureDocs.test_cli_exit_codes) ... ok
+test_correct_reference (test_securedocs.TestSecureDocs.test_correct_reference) ... ok
+test_different (test_securedocs.TestSecureDocs.test_different) ... ok
+test_empty (test_securedocs.TestSecureDocs.test_empty) ... ok
+test_file (test_securedocs.TestSecureDocs.test_file) ... ok
+test_hamming (test_securedocs.TestSecureDocs.test_hamming) ... ok
+test_incorrect_reference (test_securedocs.TestSecureDocs.test_incorrect_reference) ... ok
+test_invalid_algorithm (test_securedocs.TestSecureDocs.test_invalid_algorithm) ... ok
+test_known_text (test_securedocs.TestSecureDocs.test_known_text) ... ok
+test_malformed_reference (test_securedocs.TestSecureDocs.test_malformed_reference) ... ok
+test_missing (test_securedocs.TestSecureDocs.test_missing) ... ok
+test_one_character (test_securedocs.TestSecureDocs.test_one_character) ... ok
+test_same (test_securedocs.TestSecureDocs.test_same) ... ok
+test_utf8 (test_securedocs.TestSecureDocs.test_utf8) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.075s
+
+OK

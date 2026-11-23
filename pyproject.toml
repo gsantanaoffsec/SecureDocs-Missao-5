@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "securedocs-hash"
+version = "1.0.0"
+description = "Verificação de integridade de documentos do SecureDocs"
+requires-python = ">=3.11"
+dependencies = []
+readme = "README.md"
+
+[project.scripts]
+securedocs = "securedocs_hash.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
